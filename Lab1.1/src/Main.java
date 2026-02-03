@@ -1,6 +1,6 @@
 void main() {
     String[] words = {"hello", "world", "string", "ball", "book", "file"};
-    Name[] names = {Name.MARIA, Name.IVAN, Name.PETER, Name.Anna, Name.MARIA, Name.VASYA};
+    Name[] names = {Name.MARIA, Name.IVAN, Name.PETER, Name.ANNA, Name.MARIA, Name.VASYA};
 
     //Task 1
     VectorQueue queue = new VectorQueue(10);
@@ -36,4 +36,15 @@ void main() {
 
     IO.println("_".repeat(10));
     stack.Show();
+
+    //Task 3
+    VectorQueue female = new VectorQueue(10);
+    VectorQueue male = new VectorQueue(10);
+
+    stack.distributeByGender(female, male);
+
+    IO.println("-----FEMALE-----");
+    female.Show();
+    IO.println("-----MALE-----");
+    male.Show();
 }

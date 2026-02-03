@@ -1,5 +1,5 @@
 public enum Name {
-    Anna("FEMALE"),
+    ANNA("FEMALE"),
     MARIA("FEMALE"),
     IVAN("MALE"),
     PETER("MALE"),

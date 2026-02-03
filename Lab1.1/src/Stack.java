@@ -42,6 +42,21 @@ public class Stack {
             element = element.prev;
         }
     }
+
+    public void distributeByGender(VectorQueue female, VectorQueue male){
+        Node element = top;
+
+        while (element != null){
+            if (element.data.getGender().equals("FEMALE")){
+                female.enqueue(element.data.name());
+            }
+            else {
+                male.enqueue(element.data.name());
+            }
+
+            element = element.prev;
+        }
+    }
 }
 
 class Node{
