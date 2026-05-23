@@ -10,26 +10,30 @@
 
 #### 1. Граф (завдання 2)
 ```mermaid
-stateDiagram-v2
-    [*] --> Initial
+graph LR
+    %% Стилізація станів
+    classDef default fill:#fff,stroke:#333,stroke-width:2px;
+    classDef success fill:#e8f8f5,stroke:#117a65,stroke-width:2px;
+    classDef error fill:#f9ebd2,stroke:#922b21,stroke-width:2px;
 
-    state "Initial\n(початковий стан)" as Initial
-    state "Q1\nчитання [a-z]*" as Q1
-    state "Q2\nчитання [F-K]+" as Q2
-    state "Success\nуспіх" as Success
-    state "Error\nпомилка" as Error
+    %% Початкова стрілка
+    Start[ ] --> |" " | Init((Init))
+    style Start fill:none,stroke:none
 
-    Initial --> Q1 : /
-    Initial --> Error : будь-що інше
+    %% Основні стани
+    Init --> |Slash /| Q1((Q1))
+    Q1 --> |LowerLetter a-z| Q1
+    Q1 --> |SpecialUpper F-K| Q2((Q2))
+    Q2 --> |SpecialUpper F-K| Q2
+    Q2 --> |EOS| SU((SU))
 
-    Q1 --> Q1 : a-z
-    Q1 --> Q2 : F-K
-    Q1 --> Error : /, EOS, інші
+    %% Стани помилки (ER)
+    ER((ER))
+    Init --> |не /| ER
+    Q1 --> |не a-z / F-K| ER
+    Q2 --> |не F-K / EOS| ER
 
-    Q2 --> Q2 : F-K
-    Q2 --> Success : EOS
-    Q2 --> Error : /, a-z, інші
-
-    Success --> [*]
-    Error --> [*]
+    %% Застосування стилей до фінальних станів
+    class SU success;
+    class ER error;
 ```
