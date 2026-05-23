@@ -27,3 +27,11 @@ graph LR
     class SU success;
     class ER error;
 ```
+
+#### Таблиця переходів (завдання 2)
+| Стан | / | a-z | F-K | EOS | Інше |
+|---|---|---|---|---|---|
+| Initial | Q1 | Error | Error | Error | Error |
+| Q1 | Error | Q1 | Q2 | Error | Error |
+| Q2 | Error | Error | Q2 | Success | Error |
+```
